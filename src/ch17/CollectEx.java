@@ -34,7 +34,7 @@ public class CollectEx {
 		List<Student2> totalList = new ArrayList<>();
 		totalList.add(new Student2("홍길동", "남", 90));
 		totalList.add(new Student2("강길동", "남", 100));
-		totalList.add(new Student2("상길동", "남", 40));
+		totalList.add(new Student2("상길동", "남", 95));
 		totalList.add(new Student2("이길동", "여", 80));
 		
 		//스트림에서 리스트 컬렉션 얻기 : toList();
@@ -43,7 +43,9 @@ public class CollectEx {
 											.toList();
 		maleList.stream()
 				.forEach(s -> System.out.println(s.getName()));
-		
+		//홍길동
+		//강길동
+		//상길동
 		System.out.println("=======================================");
 		
 		//학생 이름을 키, 점수를 값으로 갖는 map생성
@@ -55,6 +57,7 @@ public class CollectEx {
 														)
 													);
 		System.out.println(map);
+		//{홍길동=90, 이길동=80, 상길동=95, 강길동=100}
 		System.out.println("=======================================");
 		System.out.println("=======================================");
 		System.out.println("=======================================");
@@ -63,12 +66,28 @@ public class CollectEx {
 													.collect(
 														Collectors.groupingBy(s -> s.getGender())
 															);
+		
 		List<Student2> maleList2 = map2.get("남");
 		maleList.stream().forEach(s -> System.out.println(s.getName()));
+		//홍길동
+		//강길동
+		//상길동
 		System.out.println("=======================================");
 
 		List<Student2> femaleList = map2.get("여");
 		femaleList.stream().forEach(s -> System.out.println(s.getName()));
-		
+		//이길동
+		System.out.println("=======================================");
+
+		Map<String, Double> map3 = totalList.stream()
+											.collect(
+												Collectors.groupingBy(
+															s -> s.getGender(),
+															Collectors.averagingDouble(s -> s.getScore())
+
+														)
+											);
+		System.out.println(map3);
+		//{남=95.0, 여=80.0}
 	}
 }
