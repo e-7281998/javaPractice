@@ -8,7 +8,7 @@ import java.io.OutputStream;
 public class WriteEx_782 {
 	public static void main(String[] args) {
 		try {
-			OutputStream os = new FileOutputStream("C:/temp/test1.db");
+			OutputStream os = new FileOutputStream("test1.txt");
 			
 			byte a = 10;
 			byte b = 20;
