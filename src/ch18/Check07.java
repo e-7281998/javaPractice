@@ -10,5 +10,15 @@ public class Check07 {
 		
 		FileReader fr = new FileReader(filePath);
 		BufferedReader br = new BufferedReader(fr);
+		
+		int rowNumber = 0;
+		String rowData;
+		while(true) {
+			rowData = br.readLine();
+			if(rowData==null)
+				break;
+			System.out.println((++rowNumber)+": "+rowData );
+		}		
+		br.close();
 	}
 }
